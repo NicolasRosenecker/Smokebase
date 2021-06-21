@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../shared/authentication.service";
+import {User} from "../shared/user";
 
 interface Response{
   access_token: string;
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-    login(){
+    /*login(){
       const val = this.loginForm.value;
       if(val.username && val.password){
         this.authService.login(val.username, val.password).subscribe(
@@ -45,17 +46,47 @@ export class LoginComponent implements OnInit {
             this.authService.setLocalStorage(res);
           });
       }
+    }*/
+
+  login(){
+      const val = this.loginForm.value;
+      if(val.username && val.password){
+        this.authService.login(val.username, val.password).subscribe(res => {
+          console.info("%c✔ Login succesful.", 'color: green;', res);
+          // @ts-ignore
+          this.authService.setLocalStorage(res.token, new User(
+          // @ts-ignore
+            this.authService.getIdFromToken(res["token"]),
+            // @ts-ignore
+            res["user_email"],
+            // @ts-ignore
+            res["user_nicename"],
+            // @ts-ignore
+            res["user_display_name"],
+            ));
+          });
+      }
     }
 
     register(){
       const val = this.registerForm.value;
       if(val.registerUsername && val.registerPassword && val.registerEmail){
-        this.authService.registerUser(val.registerUsername, val.registerPassword, val.registerEmail).subscribe(response => {
-          console.info("%c✔ Registration succesful.", 'color: green;', response);
-          this.authService.login(val.registerUsername, val.registerPassword).subscribe(
-            res => {
+        this.authService.registerUser(val.registerUsername, val.registerPassword, val.registerEmail).subscribe(res => {
+          console.info("%c✔ Registration succesful.", 'color: green;', res);
+
+          this.authService.login(val.registerUsername, val.registerPassword).subscribe(res => {
+            console.info("%c✔ Login succesful.", 'color: green;', res);
+            // @ts-ignore
+            this.authService.setLocalStorage(res.token, new User(
               // @ts-ignore
-              this.authService.setLocalStorage(res);
+              this.authService.getIdFromToken(res["token"]),
+              // @ts-ignore
+              res["user_email"],
+              // @ts-ignore
+              res["user_nicename"],
+              // @ts-ignore
+              res["user_display_name"],
+            ));
             });
         });
       }

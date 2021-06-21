@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import jwt_decode from "jwt-decode";
+import {User} from "./user";
 
 
 interface Token {
@@ -27,29 +28,20 @@ export class AuthenticationService {
   }
 
   registerUser(username: string, password: string, email: string){
-    return this.http.post(`https://api.s1810456030.student.kwmhgb.at/wp-json/wp/v2/users/register?
-      username=` + username +
+    return this.http.post(`https://api.s1810456030.student.kwmhgb.at/wp-json/wp/v2/users/register?username=`
+      + username +
       '&password=' + password +
       '&email=' + email, {});
   }
 
-  public setLocalStorage(token: string) {
-    console.info("%c✔ Logged in, storing token", 'color: green;');
-    // @ts-ignore
-    let userToken = token["token"];
+  setLocalStorage(token: string, user: User) {
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
+  }
 
+  getIdFromToken(token: string): number {
     // @ts-ignore
-    let userName = token["user_display_name"];
-
-    // @ts-ignore
-    const decodedToken = jwt_decode(userToken) as Token;
-
-    // @ts-ignore
-    let userId = decodedToken["data"]["user"]["id"];
-
-    localStorage.setItem("token", userToken);
-    localStorage.setItem("userId", userId);
-    localStorage.setItem("userName", userName);
+    return +(jwt_decode(token) as Token)["data"]["user"]["id"];
   }
 
   logout() {
@@ -77,7 +69,8 @@ export class AuthenticationService {
   }
 
   public getUsername(){
-    return localStorage.getItem("userName");
+    let user = JSON.parse(<string>localStorage.getItem("user"));
+    return user.user_display_name;
   }
 
 }
