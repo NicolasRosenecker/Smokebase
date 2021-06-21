@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SmokebaseService } from "../shared/smokebase.service";
 import { Tobacco } from "../shared/tobacco";
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'bs-tobacco-list',
@@ -20,7 +22,6 @@ export class TobaccoListComponent implements OnInit {
 
     const renderPosts = () =>{
       this.app.getAllTobaccos(tobaccosPerPage).subscribe(res => this.tobaccos = res);
-      console.log(tobaccosPerPage);
     }
 
     renderPosts();
@@ -29,11 +30,11 @@ export class TobaccoListComponent implements OnInit {
     button!.addEventListener("click", function(){
       tobaccosPerPage += 10;
       renderPosts();
-
     });
   }
 
+  sortByBrand(){
 
-
+  }
 
 }

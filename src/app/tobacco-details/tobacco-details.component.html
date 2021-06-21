@@ -19,5 +19,6 @@
     <div class="row">
       <h1>Kommentare</h1>
     </div>
+    <button *ngIf="authService.isLoggedIn()" id="add_comment_button" (click)="addComment()">Kommentar hinzufügen</button>
   </div>
 </div>

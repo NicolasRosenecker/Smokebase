@@ -18,7 +18,6 @@ export class ShishaListComponent implements OnInit {
 
     const renderPosts = () =>{
       this.app.getAllShishas(shishasPerPage).subscribe(res => this.shishas = res);
-      console.log(shishasPerPage);
     }
 
     renderPosts();

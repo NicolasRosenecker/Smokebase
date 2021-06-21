@@ -1,5 +1,6 @@
-<div style="width: 80%" class="mx-auto">
-  <div class="card-deck justify-content-start mt-5 mx-5">
+<div style="width: 80%" class="mx-auto justify-content-start">
+  <button (click)="sortByBrand()">Sort</button>
+  <div class="card-deck mt-5 mx-5">
     <a *ngFor="let tobacco of tobaccos" class=" bs-tobacco-list-item"
        [tobacco]="tobacco"
        [routerLink]="tobacco.id">
@@ -9,3 +10,4 @@
     <button id="load_more_tobaccos">Weitere Tabaks laden</button>
   </div>
 </div>
+

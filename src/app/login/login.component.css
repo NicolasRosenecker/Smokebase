@@ -1,4 +1,4 @@
-#login_button, #logout_button {
+#login_button, #logout_button, #register_button {
   background-color: white;
   color: black;
   border: 2px solid #292b2c;
@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 
-#login_button:hover, #logout_button:hover {
+#login_button:hover, #logout_button:hover, #register_button:hover {
   background-color: #292b2c;
   color: white;
 }
@@ -23,11 +23,4 @@ input:focus{
   border-color: #292b2c;
 }
 
-#registerLink{
-  color: blue;
-}
 
-#registerLink:hover{
-  cursor: pointer;
-  text-decoration: underline;
-}

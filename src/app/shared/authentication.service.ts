@@ -26,6 +26,13 @@ export class AuthenticationService {
     });
   }
 
+  registerUser(username: string, password: string, email: string){
+    return this.http.post(`https://api.s1810456030.student.kwmhgb.at/wp-json/wp/v2/users/register?
+      username=` + username +
+      '&password=' + password +
+      '&email=' + email, {});
+  }
+
   public setLocalStorage(token: string) {
     console.info("%c✔ Logged in, storing token", 'color: green;');
     // @ts-ignore

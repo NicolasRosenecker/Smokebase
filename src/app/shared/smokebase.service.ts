@@ -17,7 +17,7 @@ export class SmokebaseService {
     return this.http.get<Tobacco[]>(`${this.api}/tobaccos?per_page=${perPage}`);
   }
 
-  getSingleTobacco(id: number): Observable<Tobacco> {
+  getSingleTobacco(id: string): Observable<Tobacco> {
     return this.http.get<Tobacco>(`${this.api}/tobaccos/${id}`);
   }
 
@@ -28,5 +28,16 @@ export class SmokebaseService {
   getSingleShisha(id: number): Observable<Shisha> {
     return this.http.get<Shisha>(`${this.api}/shishas/${id}`);
   }
+
+  addCommentToPost(author_id: number, author_name: string, post: number, comment: string): Observable<any> {
+    return this.http.post(`https://api.s1810456030.student.kwmhgb.at/wp-json/wp/v2/comments`, {
+      'post': post.toString(),
+      'author': author_id.toString(),
+      'author_name': author_name,
+      'comment': comment
+    });
+  }
+
+
 
 }

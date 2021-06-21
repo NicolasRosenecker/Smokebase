@@ -14,6 +14,7 @@ interface Response{
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  registerForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -27,6 +28,12 @@ export class LoginComponent implements OnInit {
       password: ["", ]
     });
 
+    this.registerForm = this.fb.group({
+      registerUsername: ["", ],
+      registerEmail: ["", ],
+      registerPassword: ["", ]
+    });
+
   }
 
     login(){
@@ -37,6 +44,20 @@ export class LoginComponent implements OnInit {
             // @ts-ignore
             this.authService.setLocalStorage(res);
           });
+      }
+    }
+
+    register(){
+      const val = this.registerForm.value;
+      if(val.registerUsername && val.registerPassword && val.registerEmail){
+        this.authService.registerUser(val.registerUsername, val.registerPassword, val.registerEmail).subscribe(response => {
+          console.info("%c✔ Registration succesful.", 'color: green;', response);
+          this.authService.login(val.registerUsername, val.registerPassword).subscribe(
+            res => {
+              // @ts-ignore
+              this.authService.setLocalStorage(res);
+            });
+        });
       }
     }
 
