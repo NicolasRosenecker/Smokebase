@@ -3,7 +3,9 @@
     <h1>{{tobacco.acf.brand}} - {{tobacco.acf.name}}</h1>
     <div class="row">
       <div class="col">
-        <p class="float-left">{{tobacco.acf.description}}</p>
+        <p>{{tobacco.acf.description}}</p>
+        <p class="mb-0"><b>Füllmenge:</b></p>
+        <p>{{tobacco.acf.amount}} g</p>
         <p class="mb-0"><b>Diese Geschmacksrichtungen erwarten dich im {{tobacco.acf.name}}:</b></p>
         <ul>
           <li *ngFor = "let flavor of tobacco.acf.flavor;">
@@ -13,6 +15,9 @@
       <div class="col">
         <img class="center" src="{{tobacco.acf.image}}" style="width: 300px;">
       </div>
+    </div>
+    <div class="row">
+      <h1>Kommentare</h1>
     </div>
   </div>
 </div>

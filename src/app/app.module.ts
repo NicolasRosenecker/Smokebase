@@ -14,6 +14,8 @@ import { TobaccoDetailsComponent } from './tobacco-details/tobacco-details.compo
 import {SmokebaseService} from "./shared/smokebase.service";
 import { HttpClientModule } from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {AuthenticationService} from "./shared/authentication.service";
 
 @NgModule({
   declarations: [
@@ -33,9 +35,10 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
 
   ],
-  providers: [SmokebaseService],
+  providers: [SmokebaseService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
