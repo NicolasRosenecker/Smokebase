@@ -1,0 +1,11 @@
+.card:hover{
+  border-color: #292b2c;
+  transition: all .6s ease;
+}
+
+.card{
+  border-color: rgba(0,0,0,.125);
+  transition: all .6s ease;
+}
+
+

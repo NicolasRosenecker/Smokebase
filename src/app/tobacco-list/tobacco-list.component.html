@@ -1,0 +1,11 @@
+<div style="width: 80%" class="mx-auto">
+  <div class="card-deck justify-content-start mt-5 mx-5">
+    <a *ngFor="let tobacco of tobaccos" class=" bs-tobacco-list-item"
+       [tobacco]="tobacco"
+       [routerLink]="tobacco.id">
+    </a>
+  </div>
+  <div class="text-center">
+    <button id="load_more_tobaccos">Weitere Tabaks laden</button>
+  </div>
+</div>

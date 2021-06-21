@@ -1,0 +1,11 @@
+<div style="width: 80%" class="mx-auto">
+  <div class="card-deck justify-content-start mt-5 mx-5">
+    <a *ngFor="let shisha of shishas" class="bs-shisha-list-item"
+       [shisha]="shisha"
+       [routerLink]="shisha.id">
+    </a>
+  </div>
+  <div class="text-center">
+    <button id="load_more_shishas">Weitere Shishas laden</button>
+  </div>
+</div>
