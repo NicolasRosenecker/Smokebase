@@ -23,7 +23,10 @@ export class ShishaDetailsComponent implements OnInit {
 
   ngOnInit() {
     const params = this.route.snapshot.params;
-    this.app.getSingleShisha(params['id']).subscribe(s => this.shisha = s);
+    this.app.getSingleShisha(params['id']).subscribe(s => {
+      this.shisha = s;
+      console.table(s.acf);
+    });
   }
 
 }

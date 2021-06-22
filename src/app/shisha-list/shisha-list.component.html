@@ -1,10 +1,19 @@
-<div style="width: 80%" class="mx-auto">
-  <div class="card-deck justify-content-start mt-5 mx-5">
+<div style="width: 80%" class="mx-auto justify-content-start">
+
+  <div class="text-center">
+    <button [ngClass]="filteredSmall ? 'button_active' : 'button_regular'" class="mt-5" id="filter_small" (click)="filterSmall()">kleine Shishas (< 50cm)</button>
+    <button [ngClass]="filteredMedium ? 'button_active' : 'button_regular'" class="mt-5" id="filter_medium" (click)="filterMedium()">mittlere Shishas (50cm - 74cm)</button>
+    <button [ngClass]="filteredLarge ? 'button_active' : 'button_regular'" class="mt-5" id="filter_large" (click)="filterLarge()">große Shishas (> 75cm)</button>
+    <button class="mt-5" id="reset_filters" (click)="ngOnInit()">Filter zurücksetzen</button>
+  </div>
+
+  <div class="card-deck mt-5 mx-5" id="#shishaList">
     <a *ngFor="let shisha of shishas" class="bs-shisha-list-item"
        [shisha]="shisha"
        [routerLink]="shisha.id">
     </a>
   </div>
+
   <div class="text-center">
     <button id="load_more_shishas">Weitere Shishas laden</button>
   </div>

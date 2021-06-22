@@ -7,7 +7,7 @@ a:hover{
   text-decoration: none;
 }
 
-#load_more_shishas {
+#load_more_shishas, #filter_small, #filter_medium, #filter_large, #reset_filters {
   background-color: white;
   color: black;
   border: 2px solid #292b2c;
@@ -21,7 +21,26 @@ a:hover{
   cursor: pointer;
 }
 
-#load_more_shishas:hover {
+#load_more_shishas:hover, #filter_small:hover, #filter_medium:hover, #filter_large:hover, #reset_filters:hover {
   background-color: #292b2c;
   color: white;
+}
+
+.button_active{
+  background-color: #292b2c !important;
+  color: white!important;
+}
+
+.button_regular{
+  background-color: white;
+  color: black;
+  border: 2px solid #292b2c;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
 }

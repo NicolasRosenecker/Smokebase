@@ -9,13 +9,17 @@ import * as $ from "jquery";
 })
 
 export class HomeComponent implements OnInit {
-  height = $(window).height();
-  width = $(window).width();
+
+
+
+
   constructor() { }
 
 
 
   ngOnInit(): void {
+    // @ts-ignore
+    console.log($("#tets").width());
 
   }
 

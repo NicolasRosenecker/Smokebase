@@ -1,11 +1,19 @@
 <div style="width: 80%" class="mx-auto justify-content-start">
-  <button (click)="sortByBrand()">Sort</button>
-  <div class="card-deck mt-5 mx-5">
+
+  <div class="text-center">
+    <button [ngClass]="filteredMenthol ? 'button_active' : 'button_regular'" class="mt-5" id="filter_with_menthol" (click)="filterMenthol()">mit Menthol</button>
+    <button [ngClass]="filteredWithoutMenthol ? 'button_active' : 'button_regular'" class="mt-5" id="filter_without_menthol" (click)="filterWithoutMenthol()">ohne Menthol</button>
+    <button class="mt-5" id="reset_filters" (click)="ngOnInit()">Filter zurücksetzen</button>
+  </div>
+
+
+  <div class="card-deck mt-5 mx-5" id="#tobaccoList">
     <a *ngFor="let tobacco of tobaccos" class=" bs-tobacco-list-item"
        [tobacco]="tobacco"
        [routerLink]="tobacco.id">
     </a>
   </div>
+
   <div class="text-center">
     <button id="load_more_tobaccos">Weitere Tabaks laden</button>
   </div>

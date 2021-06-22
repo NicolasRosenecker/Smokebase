@@ -16,11 +16,14 @@ interface Response{
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   registerForm!: FormGroup;
+  publicKey:string ="BNV0udXkCn6PawJqU4RxC1iQwlyNrvyYwLom1Wnaaqz5Brcq2QCqZSG9acpS_dlJCFbPlhwWuJWPOhpyMd37oXU";
+  privateKey:string ="1pAPuVDm3oJXsU46mob_OM7biPGAJtgjRWp3anEa81M";
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     public authService: AuthenticationService,
+
   ) { }
 
   ngOnInit(): void {
@@ -36,17 +39,6 @@ export class LoginComponent implements OnInit {
     });
 
   }
-
-    /*login(){
-      const val = this.loginForm.value;
-      if(val.username && val.password){
-        this.authService.login(val.username, val.password).subscribe(
-          res => {
-            // @ts-ignore
-            this.authService.setLocalStorage(res);
-          });
-      }
-    }*/
 
   login(){
       const val = this.loginForm.value;
@@ -99,4 +91,5 @@ export class LoginComponent implements OnInit {
     logout(){
       return this.authService.logout();
     }
+
 }

@@ -23,3 +23,9 @@
   background-color: #292b2c;
   color: white;
 }
+
+textarea:focus{
+  outline-style: none;
+  box-shadow: none;
+  border-color: #292b2c;
+}

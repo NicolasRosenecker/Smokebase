@@ -16,9 +16,19 @@
         <img class="center" src="{{tobacco.acf.image}}" style="width: 300px;">
       </div>
     </div>
+    <hr>
     <div class="row">
       <h1>Kommentare</h1>
     </div>
-    <button *ngIf="authService.isLoggedIn()" id="add_comment_button" (click)="addComment()">Kommentar hinzufügen</button>
+
+    <form *ngIf="authService.isLoggedIn()" class="form-register mt-5" [formGroup]="commentFormTobacco" (submit)="addComment()">
+      <div>
+        <label class="sr-only">Dein Kommentar</label>
+        <textarea type="text" class="form-control mb-2" placeholder="Schreibe etwas ..." formControlName="comment" required ></textarea>
+
+      </div>
+      <button id="add_comment_button" type="submit">Kommentar senden</button>
+    </form>
+
   </div>
 </div>

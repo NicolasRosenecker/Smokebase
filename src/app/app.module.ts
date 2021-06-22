@@ -16,6 +16,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AuthenticationService} from "./shared/authentication.service";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import {AuthenticationService} from "./shared/authentication.service";
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
   ],
   providers: [SmokebaseService, AuthenticationService],

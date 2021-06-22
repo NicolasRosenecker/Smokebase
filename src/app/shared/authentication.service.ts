@@ -68,6 +68,16 @@ export class AuthenticationService {
     }
   }
 
+  public getLoggedInUser(){
+    if (this.isLoggedIn()) {
+      let user = JSON.parse(<string>localStorage.getItem("user"));
+      return new User(user.id, user.user_email, user.user_nicename, user.user_display_name);
+    }
+    else
+      return null;
+
+  }
+
   public getUsername(){
     let user = JSON.parse(<string>localStorage.getItem("user"));
     return user.user_display_name;

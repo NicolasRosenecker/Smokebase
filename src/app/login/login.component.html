@@ -13,9 +13,11 @@
       </form>
 
     </div>
+
     <div class="col">
       <h1 class="invisible">xxx</h1>
       <h5>... oder erstelle jetzt deine eigenes Smokebase Konto!</h5>
+
       <form class="form-register mt-5" [formGroup]="registerForm" (ngSubmit)="register()">
         <label for="registerUsername" class="sr-only">E-Mail</label>
         <input type="text" id="registerUsername" class="form-control mb-2" placeholder="Username" formControlName="registerUsername" required >
@@ -23,9 +25,9 @@
         <input type="email" id="registerEmail" class="form-control mb-2" placeholder="E-Mail" formControlName="registerEmail" required >
         <label for="password" class="sr-only">Passwort</label>
         <input type="password" id="registerPassword" class="form-control mb-2" placeholder="Passwort" formControlName="registerPassword" required>
-
         <button id="register_button" type="submit">Registrieren</button>
       </form>
+
     </div>
   </div>
 
