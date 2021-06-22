@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
             ));
           });
       }
+
     }
 
     register(){
@@ -82,6 +83,24 @@ export class LoginComponent implements OnInit {
             });
         });
       }
+      function greetingNotification(){
+        const notificationTitle = "Grüß dich!";
+        const notificationBody = "Danke für's Registrieren bei Smokebase! 😎";
+        const notifImg = "https://img.stickers.cloud/packs/c14e9903-e67f-4ada-885a-432e3467ee89/webp/538c114f-a52e-4df7-90a7-c35617b23708.webp";
+        const options = {
+          body: notificationBody,
+          icon: notifImg
+        }
+
+        new Notification(notificationTitle, options);
+        setTimeout(greetingNotification, 1000);
+      }
+
+      Notification.requestPermission().then((result) => {
+
+        if(result == 'granted')
+          greetingNotification();
+      });
     }
 
     isLoggedIn(){
