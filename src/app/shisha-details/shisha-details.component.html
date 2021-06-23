@@ -17,9 +17,28 @@
       </div>
     </div>
     <hr>
-    <div class="row">
-      <h1>Kommentare</h1>
+
+    <h1>Kommentare</h1>
+    <div *ngFor = "let comment of comments[0];" class="row">
+      <div class="col-10">
+        <div class="card mb-3" >
+          <p class="card-text ml-3">{{app.cleanComment(comment.content["rendered"])}}</p>
+          <p class="card-text ml-3"><small class="text-muted">von {{comment.author_name}}</small></p>
+        </div>
+      </div>
+      <div class="col-2">
+        <button class="delete_comment_button" id="{{comment.id}}" (click)="deleteComment(comment.id)">Kommentar löschen</button>
+      </div>
     </div>
+
+    <form  class="form-comment mt-5" [formGroup]="commentFormShisha" (submit)="addComment()">
+      <div>
+        <label class="sr-only">Dein Kommentar</label>
+        <textarea type="text" class="form-control mb-2" placeholder="Schreibe etwas ..." formControlName="comment" required ></textarea>
+
+      </div>
+      <button id="add_comment_button" type="submit" (click)="addComment()">Kommentar hinzufügen</button>
+    </form>
 
 
   </div>

@@ -4,6 +4,7 @@ import {Observable,throwError } from "rxjs";
 import {catchError, retry} from 'rxjs/operators';
 import {Tobacco} from "./tobacco";
 import {Shisha} from "./shisha";
+import {Token} from "@angular/compiler";
 
 @Injectable()
 
@@ -50,18 +51,32 @@ export class SmokebaseService {
     return this.http.get<Shisha[]>(`${this.api}/shishas?categories=7&per_page=1000`);
   }
 
-  addCommentToPost(author_id: string, author_name: string, post: string, comment: string): Observable<any> {
-    return this.http.post(`${this.apiV2}/comments`, {
-      'post': post.toString(),
-      'author': author_id.toString(),
-      'author_name': author_name,
-      'comment': comment
+  addCommentToPost(author_id: string, author_email: string, post_id: string, comment: string, token: string): Observable<any> {
+    return this.http.post(`${this.apiV2}/comments?post=` + post_id + "&content=" + comment, {
+      'post': post_id,
+      'comment': comment,
+      'author': author_id,
+      'author_email': author_email,
+      'token' : token
+    });
+  }
+
+  deleteCommentFromPost(comment_id: string): Observable<any> {
+    return this.http.delete(`${this.apiV2}/comments/` + comment_id, {
+
     });
   }
 
   getAllComments(id: string){
-    return this.http.get(`${this.apiV2}/comments/tobaccos/comments`, { params: { 'id': id } });
+    return this.http.get(`${this.apiV2}/comments?post=` + id);
   }
+
+  cleanComment(comment: string){
+    let cleanComment = comment.replace(/<\/?[^>]+(>|$)|\n/g, "");
+    return cleanComment;
+  }
+
+
 
 
 
